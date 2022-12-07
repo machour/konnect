@@ -10,17 +10,21 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class Gateway
 {
-    private string $apiKey;
-
-    private RequestFactoryInterface $requestFactory;
-    private StreamFactoryInterface $streamFactory;
-    private ClientInterface $httpClient;
-    private bool $productionMode;
+    /** @var string  */
+    private $apiKey;
+    /** @var \Psr\Http\Message\RequestFactoryInterface */
+    private $requestFactory;
+    /** @var \Psr\Http\Message\StreamFactoryInterface */
+    private $streamFactory;
+    /** @var \Psr\Http\Client\ClientInterface */
+    private $httpClient;
+    /** @var bool */
+    private $productionMode;
 
     public function __construct(
         RequestFactoryInterface $requestFactory,
         StreamFactoryInterface  $streamFactory,
-        ClientInterface         $httpClient,
+        ClientInterface         $httpClient
     )
     {
         $this->requestFactory = $requestFactory;
