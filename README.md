@@ -1,10 +1,10 @@
+# Konnect PHP SDK (unofficial)
+
 <p align="center">
     <a href="https://konnect.network/" target="_blank">
         <img src="./konnect.png" height="50" alt="Konnect">
     </a>
 </p>
-
-# Konnect PHP SDK (unofficial)
 
 The payment solution for Tunisia.
 Simple, fast, personalized, immediate and for all !
