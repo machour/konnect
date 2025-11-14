@@ -1,10 +1,6 @@
 # Konnect PHP SDK (unofficial)
 
-<p align="center">
-    <a href="https://konnect.network/" target="_blank">
-        <img src="./konnect.png" height="50" alt="Konnect">
-    </a>
-</p>
+[![Konnect](./konnect.svg)](https://konnect.network)
 
 The payment solution for Tunisia.
 Simple, fast, personalized, immediate and for all !
@@ -59,7 +55,7 @@ $konnect->setProductionMode();
 
 Creates a new payment request.
 
-See [Konnect's documentation](https://api.konnect.network/api/v2/konnect-gateway#tag/Payments/paths/~1payments~1init-payment/post) for the full description of `$params` and the returned array.
+See [Konnect's documentation](https://docs.konnect.network/docs/en/api-integration/endpoints/initiate-payment) for the full description of request and response data.
 
 ```php
 /**
@@ -73,35 +69,32 @@ public function initPayment(array $params): array
 
 ```php
 $response = $konnect->initPayment([
-    "receiverWalletId" => "5f7a209aeb3f76490ac4a3d1",
-    "description" => "payment description",
-    "amount" => 100000, // millimes
+    "amount" => 10000, // millimes
     "type" => "immediate",
-    "lifespan" => 10, // minutes
-    "token" => "TND",
-    "firstName" => "Mon prenom",
-    "lastName" => "Mon nom",
-    "phoneNumber" => "12345678",
-    "email" => "mon.email@mail.com",
-    "orderId" => "1234657",
-    "link" => "https://api.dev.konnect.network/WSlQUtBF8",
-    "silentWebhook" => true,
-    "checkoutForm" => true,
-    "webhook" => "https://merchant.tech/api/notification_payment",
-    "successUrl" => "https://dev.konnect.network/gateway/payment-success",
-    "failUrl" => "https://dev.konnect.network/gateway/payment-failure",
-    "acceptedPaymentMethods" => [
-        "bank_card",
+    "description" => "payment description",
+     "acceptedPaymentMethods" => [
         "wallet",
+        "bank_card",
         "e-DINAR"
     ]
+    ],
+    "lifespan" => 10, // minutes
+    "checkoutForm" => true,
+    "addPaymentFeesToAmount" => true,
+    "firstName" => "John",
+    "lastName" => "Doe",
+    "phoneNumber" => "22777777",
+    "email" => "john.doe@gmail.com",
+    "orderId" => "1234657",
+    "webhook" => "https://merchant.tech/api/notification_payment",
+    "theme" => "dark"
 ]);
 
 var_dump($response);
 /**
 array(2) {
 ["payUrl"]=>
-string(80) "https://preprod.konnect.network/gateway/pay?payment_ref=6392d70408ac861bcea30337"
+string(83) "https://gateway.konnect.network/pay?payment_ref=6392d70408ac861bcea30337&theme=dark"
 ["paymentRef"]=>
 string(24) "6392d70408ac861bcea30337"
 }
@@ -114,7 +107,7 @@ string(24) "6392d70408ac861bcea30337"
 
 Gets payment details for the specified id.
 
-See [Konnect's documentation](https://api.konnect.network/api/v2/konnect-gateway#tag/Payments/paths/~1payments~1:paymentId/get) for the full description of the returned array.
+See [Konnect's documentation](https://docs.konnect.network/docs/en/api-integration/endpoints/get-payment-details) for the full description of the response data.
 
 ```php
 /**
@@ -151,5 +144,5 @@ try {
 
 ## See also
 
-* [Konnect web site](https://konnect.network/)
-* [Konnect docs](https://api.konnect.network/api/v2/konnect-gateway)
+* [Konnect website](https://konnect.network/)
+* [Konnect docs](https://docs.konnect.network/docs/en/api-integration/intro)

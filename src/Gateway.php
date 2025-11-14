@@ -54,7 +54,7 @@ class Gateway
      */
     private function callApi(string $method, string $endpoint, array $params = []): array
     {
-        $domain = $this->productionMode ? 'api' : 'api.preprod';
+        $domain = $this->productionMode ? 'api' : 'api.sandbox';
 
         $request = $this->requestFactory
             ->createRequest($method, "https://$domain.konnect.network/api/v2/$endpoint")
