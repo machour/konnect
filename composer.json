@@ -16,7 +16,7 @@
     "source": "https://github.com/machour/konnect"
   },
   "require": {
-    "php": "^7.3|^7.4|^8.0|^8.1|^8.2",
+    "php": ">=7.3",
     "psr/http-client": "^1.0",
     "psr/http-client-implementation": "*",
     "psr/http-factory": "^1.0",
